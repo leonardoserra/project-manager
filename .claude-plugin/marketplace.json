@@ -1,0 +1,16 @@
+{
+  "name": "project-manager",
+  "owner": {
+    "name": "Leonardo Serra"
+  },
+  "metadata": {
+    "description": "Marketplace for the project-manager plugin."
+  },
+  "plugins": [
+    {
+      "name": "project-manager",
+      "source": "./",
+      "description": "Keeps an ordered PROJECT_<name>.md work queue of a ticket tool's scope (GitHub Project, Jira epic, GitLab milestone, Trello board, ClickUp list, …) with /project-manager:init, :next, :continue, :sync and :cleanup."
+    }
+  ]
+}

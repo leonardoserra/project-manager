@@ -1,0 +1,20 @@
+{
+  "name": "project-manager",
+  "version": "0.1.0",
+  "description": "Keeps an ordered PROJECT_<name>.md work queue of a ticket tool's scope (GitHub Project, Jira epic, GitLab milestone, Trello board, ClickUp list, …). `init` creates it, `next` previews the next ticket, `continue` starts it, `sync` refreshes statuses, `cleanup` retires a finished project.",
+  "author": {
+    "name": "Leonardo Serra"
+  },
+  "skills": "./skills/",
+  "homepage": "https://github.com/leonardoserra/project-manager",
+  "repository": "https://github.com/leonardoserra/project-manager",
+  "license": "MIT",
+  "keywords": [
+    "project",
+    "backlog",
+    "issues",
+    "jira",
+    "github-projects",
+    "workflow"
+  ]
+}
