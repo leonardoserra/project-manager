@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.1 - 2026-10-16
+
+- Changed
+  - Project files are now local by default. The skills add `PROJECT_*.md`, `PROJECT.md` and `.projects/` to
+    `.gitignore` and never commit it, and `/project-manager:init` no longer asks whether to commit the file. To share a
+    project file anyway, `git add -f` it or drop the lines from `.gitignore`.
+  - A project file that is already tracked is flagged once, with an offer to untrack it while keeping the local copy.
+    If you keep it tracked, the skills keep working on it.
+  - Pointers to a project file now go in `CLAUDE.local.md` instead of `AGENTS.md` or `CLAUDE.md`.
+
 ## 0.1.0 - 2026-10-16
 
 - Changed

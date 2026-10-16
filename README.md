@@ -1,6 +1,7 @@
 # project-manager
 
-A Claude Code plugin that keeps an ordered work queue for one scope of a ticket tool in a Markdown file in your repo:
+A Claude Code plugin that keeps an ordered work queue for one scope of a ticket tool in a local Markdown file in your
+repo:
 a GitHub Project, a Jira epic, a GitLab milestone, a Trello board, a ClickUp list, and so on. Sessions read the file to
 know which ticket comes next, keep its statuses in line with the tool, and delete a row once its ticket is closed.
 
@@ -24,6 +25,11 @@ Each project gets one self-describing file:
 | Others (GitLab, Trello, ClickUp, Linear, Azure Boards, …) | `PROJECT_<TOOL>_<project name or code>.md` |
 
 With one project, the file sits at the repo root. With more than one, all project files move to `.projects/`.
+
+Project files are local by default. The skills add `/PROJECT_*.md`, `/PROJECT.md` and `/.projects/` to `.gitignore`
+and never stage or commit anything, so using the plugin stays a personal choice. To share a project file anyway,
+`git add -f` it or drop the lines from `.gitignore`. A pointer for future sessions goes in `CLAUDE.local.md`, never in
+tracked docs.
 
 Each file holds three sections:
 
@@ -52,9 +58,9 @@ Sets up a new project file.
    - which tool to use;
    - which scope (project, epic, board or list link);
    - the ordering logic: bugs first, then impact, features last; by priority or labels; the tool's own order; or your
-     own rule;
-   - whether to commit the file or keep it git-ignored.
-3. Fetches the open tickets, orders them (dependencies always go first), and writes the file.
+     own rule.
+3. Fetches the open tickets, orders them (dependencies always go first), adds the project files to `.gitignore`, and
+   writes the file.
 
 Anything the free text already answers is not asked again. You can run it in a new session or partway through one.
 

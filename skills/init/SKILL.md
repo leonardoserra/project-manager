@@ -26,7 +26,7 @@ again.
 
 ## 2. Ask
 
-Ask everything in **one** `AskUserQuestion` call (up to 4 questions), and skip any question `$ARGUMENTS` already
+Ask everything in **one** `AskUserQuestion` call (up to 3 questions), and skip any question `$ARGUMENTS` already
 answers:
 
 1. **Tool**: the detected one first, labelled `(Recommended)`, then the likely alternatives (for a GitHub remote:
@@ -41,7 +41,8 @@ answers:
    - "By the tool's priority field or labels";
    - "Keep the tool's current order (board or rank order)";
    - Other: the user describes their own rule.
-4. **Commit the file?**: "Keep it local (git-ignored)" or "Commit it with the repo". Default to local when unsure.
+
+Don't ask whether to commit the file: project files are always local (see the contract, § Local only).
 
 If the scope cannot be reached (wrong link, no access), say exactly what failed and ask again. Don't create an empty
 file.
@@ -67,19 +68,18 @@ file.
 - **Location**:
   - When this is the only project, the file goes at the repo root.
   - When a project file already exists (at the root or as a legacy `PROJECT.md`), create `.projects/` if it isn't
-    there and put all project files inside it. Move existing files with `git mv` if they are tracked, plain `mv`
-    otherwise.
-  - Then grep the repo docs (`AGENTS.md`, `CLAUDE.md`, `README*`) for the old paths, and offer to update them.
+    there and put all project files inside it, moving existing ones with plain `mv`.
+  - Then grep `CLAUDE.local.md` for the old paths, and offer to update them.
+- **Ignore first**: before writing, make sure `.gitignore` holds the project-manager lines, and handle any
+  tracked project file, as the contract says (§ Local only).
 - Write `# PROJECT_<name>`, the version marker, `## Source`, `## Order logic` and `## Queue`, exactly as the contract
   lays them out.
-- If the user chose to keep the file local, add `PROJECT_*.md` and `.projects/` to `.gitignore`. Ask first if the repo
-  rules say to confirm file changes.
-- Offer, without doing it, to add a pointer to the project file in `AGENTS.md` or `CLAUDE.md` (in its navigation table
-  or workflow step), so future sessions read it before picking work.
+- Offer, without doing it, to add a pointer to the project file in `CLAUDE.local.md`, so future sessions read it
+  before picking work. Never add it to tracked docs such as `AGENTS.md` or `CLAUDE.md`.
 
 ## 5. Report
 
-In a few lines: the file path, how many tickets it lists, and how they are grouped (for example, "4 P1 bugs, then 6
+In a few lines: the file path (and that it is git-ignored locally), how many tickets it lists, and how they are grouped (for example, "4 P1 bugs, then 6
 P2 bugs, …"). Add the non-obvious ordering choices as questions the user can answer to reorder. Then name the next
 commands: `/project-manager:next`, `/project-manager:continue`, `/project-manager:sync`.
 

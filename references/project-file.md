@@ -16,10 +16,37 @@ created it.
 - Names are sanitized: keep letters, digits, `-` and `_`; spaces and other characters become `-`. For example, the
   GitHub project "Pin Party" becomes `PROJECT_Pin-Party.md`, and the Jira epic `PP-42` becomes `PROJECT_JIRA_PP-42.md`.
 - **One project** in the repo: the file sits at the repo root.
-- **Two or more**: all project files live in `.projects/` at the repo root (`git mv` the ones that are tracked).
+- **Two or more**: all project files live in `.projects/` at the repo root (moved with plain `mv`).
 - Finding the files: `ls PROJECT_*.md .projects/PROJECT_*.md 2>/dev/null` from the repo root (`git rev-parse
   --show-toplevel`, else cwd). A legacy unprefixed `PROJECT.md` also counts. Offer to rename it to the convention, but
   only rename after the user says yes.
+
+## Local only
+
+Project files are a personal tool, not part of the repo by default. They are always git-ignored.
+
+- **Ignore them in the repo-root `.gitignore`** (create it if missing). It must hold these lines; append the missing
+  ones, and never duplicate a line:
+
+  ```
+  # project-manager (local work queues)
+  /PROJECT_*.md
+  /PROJECT.md
+  /.projects/
+  ```
+
+- **Every skill that writes a project file** checks these lines first and adds the missing ones, without asking.
+  Never stage or commit the `.gitignore` change: whether to push it is the user's call.
+- **Pushing a project file anyway** is the user's choice: they can `git add -f` it, or remove the lines from
+  `.gitignore`. Never do either on your own, and never re-add the lines to a `.gitignore` the user changed on purpose
+  (a removed block in the git history, or a tracked project file the user says to keep).
+- **A tracked project file** (`git ls-files PROJECT_*.md PROJECT.md .projects/`): the user may have pushed it on
+  purpose. Mention it once, and offer to untrack it with `git rm --cached <file>`, which keeps the local copy. Only run
+  it after a yes, never commit, and if the user wants to keep it tracked, keep working on it as is.
+- **Never reference a project file from tracked files** (`AGENTS.md`, `CLAUDE.md`, `README*`, …). A pointer for
+  future sessions goes in `CLAUDE.local.md`, and only when that file is git-ignored too (`git check-ignore -q
+  CLAUDE.local.md`); otherwise add `/CLAUDE.local.md` to `.gitignore` first, after asking.
+- Outside a git repo, there is nothing to ignore: skip these steps.
 
 ## Resolving the `<project>` argument
 

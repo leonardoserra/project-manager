@@ -25,9 +25,10 @@ directory.
      - "Delete it anyway";
      - "Cancel".
 5. **Delete**:
-   - Remove the file with `git rm` if it is tracked, plain `rm` otherwise. Don't commit.
+   - Remove the file with plain `rm`. If it is still tracked (a legacy file), use `git rm` instead. Don't commit.
    - If `.projects/` is now empty, remove it.
-   - Grep `AGENTS.md`, `CLAUDE.md` and `README*` for the file's path, and offer to remove those references (only remove
-     them after a yes).
+   - Grep `CLAUDE.local.md` (and, for legacy files, `AGENTS.md`, `CLAUDE.md` and `README*`) for the file's path, and
+     offer to remove those references (only remove them after a yes).
+   - Leave the `.gitignore` lines in place: they are harmless and cover the next project.
 6. **Report**: one line with what was checked and whether the file was deleted. List any open tickets that were left
    behind.

@@ -22,6 +22,8 @@ names, working-memory folders, skills to load, who runs the tests, never commit)
    - update the statuses that changed.
 
    Leave anything stranger than that to `/project-manager:sync`, and mention it.
+4. **Keep it local**: make sure the file is git-ignored, as the contract says (§ Local only). Never stage or commit it
+   with the ticket's work.
 
 ## 2. Propose
 

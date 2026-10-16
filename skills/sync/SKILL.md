@@ -46,7 +46,8 @@ question text, and offer "Apply the suggestions (Recommended)" / "Decide one by 
 | A file ticket can't be found (deleted, or no access) | Delete the row, and tell the user which ticket |
 | A ticket is in the tool's done column but still open (or the reverse) | Keep the row and flag it, because the two disagree |
 
-Then renumber the queue and save each file.
+Then renumber the queue and save each file. Before saving, make sure the files are git-ignored, as the contract says
+(§ Local only).
 
 ## 4. Report
 
