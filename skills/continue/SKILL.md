@@ -44,8 +44,9 @@ the rule text as it is unless the user asks to change it.
 
 1. Ask once whether to set the ticket to the tool's in-progress status, both online and in the file. On a yes, write
    it to the tool using the IDs in `## Source`, then update the row. On a no, leave both as they are.
-2. Hand over to the repo's workflow: the branch naming, the working-memory folder (for example, the `local-context`
-   skills if the repo uses them), and the skills the ticket names. Then begin the ticket's first step.
+2. Hand over to the repo's workflow: the branch naming, the working-memory folder, and the skills the ticket names.
+   Then begin the ticket's first step. If the repo uses the `local-context` plugin, its skills run only when the user
+   types them: create the folder in its layout yourself, or ask the user to run `/local-context:local-context-start`.
 3. When the work reaches review (a PR is opened, or the user says so), offer to move the ticket to the in-review
    status the same way. When the ticket is closed, delete its row and renumber.
 

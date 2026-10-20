@@ -28,8 +28,8 @@ With one project, the file sits at the repo root. With more than one, all projec
 
 Project files are local by default. The skills add `/PROJECT_*.md`, `/PROJECT.md` and `/.projects/` to `.gitignore`
 and never stage or commit anything, so using the plugin stays a personal choice. To share a project file anyway,
-`git add -f` it or drop the lines from `.gitignore`. A pointer for future sessions goes in `CLAUDE.local.md`, never in
-tracked docs.
+`git add -f` it or drop the lines from `.gitignore`. A new pointer for future sessions goes in `CLAUDE.local.md`, never
+in tracked docs; pointers your tracked docs already hold are left as they are.
 
 Each file holds three sections:
 

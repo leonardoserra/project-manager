@@ -43,9 +43,10 @@ Project files are a personal tool, not part of the repo by default. They are alw
 - **A tracked project file** (`git ls-files PROJECT_*.md PROJECT.md .projects/`): the user may have pushed it on
   purpose. Mention it once, and offer to untrack it with `git rm --cached <file>`, which keeps the local copy. Only run
   it after a yes, never commit, and if the user wants to keep it tracked, keep working on it as is.
-- **Never reference a project file from tracked files** (`AGENTS.md`, `CLAUDE.md`, `README*`, …). A pointer for
-  future sessions goes in `CLAUDE.local.md`, and only when that file is git-ignored too (`git check-ignore -q
-  CLAUDE.local.md`); otherwise add `/CLAUDE.local.md` to `.gitignore` first, after asking.
+- **Never add a reference to a project file to tracked files** (`AGENTS.md`, `CLAUDE.md`, `README*`, …). A pointer
+  for future sessions goes in `CLAUDE.local.md`, and only when that file is git-ignored too (`git check-ignore -q
+  CLAUDE.local.md`); otherwise add `/CLAUDE.local.md` to `.gitignore` first, after asking. References the repo's
+  tracked docs already hold are the repo's choice: follow them and leave them as they are.
 - Outside a git repo, there is nothing to ignore: skip these steps.
 
 ## Resolving the `<project>` argument
