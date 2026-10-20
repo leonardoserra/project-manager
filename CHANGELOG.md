@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## 0.1.2 - 2026-10-20
+
+- Changed
+  - References to a project file that your tracked docs (`AGENTS.md`, `CLAUDE.md`, `README*`) already hold are
+    followed and left as they are. The skills still never add new ones there.
+  - `/project-manager:continue` no longer expects to start the `local-context` skills itself, since only you can run
+    them: it creates the working-memory folder in their layout, or asks you to run
+    `/local-context:local-context-start`.
+
 ## 0.1.1 - 2026-10-16
 
 - Changed
